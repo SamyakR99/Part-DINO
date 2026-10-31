@@ -1,0 +1,25 @@
+name: part_dino
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy>=1.23.0
+  - scipy>=1.10.0
+  - scikit-learn>=1.2.0
+  - scikit-image>=0.20.0
+  - matplotlib>=3.7.0
+  - pillow>=9.5.0
+  - tqdm>=4.65.0
+  - pip:
+      - torch>=2.0.0
+      - torchvision>=0.15.0
+      - opencv-python>=4.7.0
+      - pycocotools>=2.0.6
+      - transformers>=4.40.0
+      - accelerate>=0.28.0
+      - huggingface_hub>=0.20.0
+
