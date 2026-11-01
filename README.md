@@ -4,9 +4,14 @@ Official PyTorch implementation for **"Complementing DINO Features with Image St
 
 ---
 
+[![Paper](https://img.shields.io/badge/Arxiv-b31b1b.svg)](https://arxiv.org/abs/2610.32293)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://samyakr99.github.io/Part_dino/)
+[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS%202026-red)](https://neurips.cc/Conferences/2026)
+
+
 ## 📌 Overview
 
-**Part-DINO** is a training-free framework for unsupervised semantic part discovery. Standard foundation model features (like DINO / DINOv2) encode rich semantics but produce coarse, blurry part boundaries due to their rigid ViT patch grid. Part-DINO overcomes this limitation by complementing dense semantic representations with high-frequency structural image gradients:
+**Part-DINO** is a training-free framework for unsupervised semantic part discovery. Self-supervised model features (like DINO / DINOv2) encode rich semantics but produce coarse, blurry part boundaries due to their rigid ViT patch grid. Part-DINO overcomes this limitation by complementing dense semantic representations with high-frequency structural image gradients:
 
 1. **Foreground Isolation**: Isolates the foreground object using text-guided SAM3 or unsupervised TokenCut.
 2. **Boundary-Aware Oversegmentation**: Blends structural edge responses (Akbas-Ahuja RAMP filter) with DINO feature gradients to compute watershed seeds and generate edge-conforming atomic regions.
