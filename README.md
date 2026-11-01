@@ -68,7 +68,6 @@ pip install -r requirements.txt
 huggingface-cli login
 ```
 
-> **Note on Hardware Requirements**: All evaluations run on a single modern GPU (e.g., NVIDIA A40, A100, RTX 3090/4090, or V100 with >=16GB VRAM).
 
 ---
 
@@ -124,11 +123,11 @@ Download PartImageNet segmentation split:
 
 ---
 
-## 🚀 Replicating Main Paper Results
+## Results
 
 Precomputed global prototypes/centroids are included in `pretrained_centroids/`, allowing you to run evaluation immediately without waiting hours for reference clustering.
 
-### Table 1: CUB-200-2011 ($K \in \{4, 8, 16\}$)
+### CUB-200-2011 ($K \in \{4, 8, 16\}$)
 
 Replicate quantitative results on the CUB dataset across granularities:
 
@@ -149,7 +148,7 @@ DATA_ROOT=/path/to/CUB_200_2011 bash scripts/run_table1_cub.sh 16
 
 ---
 
-### Table 2: CelebA / MAFL ($K \in \{4, 8, 16\}$)
+### CelebA / MAFL ($K \in \{4, 8, 16\}$)
 
 Replicate quantitative comparisons on CelebA across granularities:
 
@@ -170,7 +169,7 @@ DATA_ROOT=/path/to/CelebA bash scripts/run_table2_celeba.sh 4
 
 ---
 
-### Table 5: PartImageNet Out-of-Distribution ($PartImage_O$) & Segmentation ($PartImage_S$)
+### PartImageNet Out-of-Distribution ($PartImage_O$) & Segmentation ($PartImage_S$)
 
 Replicate pixel-level NMI and ARI on both PartImageNet benchmark splits:
 
