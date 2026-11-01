@@ -11,7 +11,7 @@ Official PyTorch implementation for **" Part-DINO: Complementing DINO Features w
 
 ## 📌 Overview
 
-**Part-DINO** is a training-free framework for unsupervised semantic part discovery. Self-supervised model features (like DINO / DINOv2) encode rich semantics but produce coarse, blurry part boundaries due to their rigid ViT patch grid. Part-DINO overcomes this limitation by complementing dense semantic representations with high-frequency structural image gradients:
+**Part-DINO** is a training-free framework for part discovery. DINO features encode rich semantic information, but their rigid patch grid causes patches near part boundaries to contain pixels from multiple parts, leading to blurred part assignments. Part-DINO complements DINO features with image structure: boundaries from low-level image segmentation partition the image into regions, within which DINO features are pooled and grouped to discover structurally coherent parts.
 
 1. **Foreground Isolation**: Isolates the foreground object using text-guided SAM3 or unsupervised TokenCut.
 2. **Boundary-Aware Oversegmentation**: Blends structural edge responses (Akbas-Ahuja RAMP filter) with DINO feature gradients to compute watershed seeds and generate edge-conforming atomic regions.
@@ -78,7 +78,7 @@ huggingface-cli login
 
 ## Dataset Preparation
 
-Set up the datasets following the directory layouts below. You can either place them in `./data/` or set the environment variable `DATA_ROOT` before running any script.
+Set up the datasets following the directory layouts below. You can either place them in `./data/` or set the environment variable `DATA_ROOT` before running the script.
 
 ### 1. CUB-200-2011 (Birds)
 Download the [CUB-200-2011](https://www.vision.caltech.edu/datasets/cub_200_2011/) dataset. Expected structure:
@@ -130,11 +130,11 @@ Download PartImageNet segmentation split:
 
 ## Results
 
-Precomputed global prototypes/centroids are included in `pretrained_centroids/`, allowing you to run evaluation immediately without waiting hours for reference clustering.
+Precomputed global prototypes/centroids are included in `pretrained_centroids/`.
 
 ### CUB-200-2011 ($K \in \{4, 8, 16\}$)
 
-Replicate quantitative results on the CUB dataset across granularities:
+Quantitative results on the CUB dataset across granularities:
 
 ```bash
 # Run all granularities (K=4, 8, 16):
@@ -144,18 +144,12 @@ DATA_ROOT=/path/to/CUB_200_2011 bash scripts/run_table1_cub.sh
 DATA_ROOT=/path/to/CUB_200_2011 bash scripts/run_table1_cub.sh 16
 ```
 
-**Expected Results (from Paper Table 1):**
-| Granularity | NME (↓) | NMI (↑) | ARI (↑) |
-|:---:|:---:|:---:|:---:|
-| **$K = 4$**  | 8.21% | 53.93% | 23.01% |
-| **$K = 8$**  | 6.00% | 61.84% | 37.92% |
-| **$K = 16$** | 4.35% | 65.45% | 46.00% |
 
 ---
 
 ### CelebA / MAFL ($K \in \{4, 8, 16\}$)
 
-Replicate quantitative comparisons on CelebA across granularities:
+Quantitative comparisons on CelebA across granularities:
 
 ```bash
 # Run all granularities (K=4, 8, 16):
@@ -165,18 +159,11 @@ DATA_ROOT=/path/to/CelebA bash scripts/run_table2_celeba.sh
 DATA_ROOT=/path/to/CelebA bash scripts/run_table2_celeba.sh 4
 ```
 
-**Expected Results (from Paper Table 2):**
-| Granularity | NME (↓) | NMI (↑) | ARI (↑) |
-|:---:|:---:|:---:|:---:|
-| **$K = 4$**  | 10.81% | 45.07% | 32.20% |
-| **$K = 8$**  | 10.59% | 41.53% | 28.59% |
-| **$K = 16$** | 9.15%  | 41.04% | 25.20% |
 
 ---
 
 ### PartImageNet Out-of-Distribution ($PartImage_O$) & Segmentation ($PartImage_S$)
 
-Replicate pixel-level NMI and ARI on both PartImageNet benchmark splits:
 
 #### 1. PartImageNet-OOD ($K \in \{8, 25, 50\}$)
 ```bash
@@ -196,19 +183,11 @@ DATA_ROOT=/path/to/PartImageNet_Seg/PartImageNet bash scripts/run_table5_partima
 DATA_ROOT=/path/to/PartImageNet_Seg/PartImageNet bash scripts/run_table5_partimagenet_seg.sh 8
 ```
 
-**Expected Results (from Paper Table 5):**
-| Dataset | Metric | $K = 8$ | $K = 25$ | $K = 50$ |
-|:---|:---:|:---:|:---:|:---:|
-| **PartImageNet-OOD** | NMI (↑) | 30.07% | 31.14% | 30.13% |
-| | ARI (↑) | 63.27% | 64.93% | 65.42% |
-| **PartImageNet-Seg** | NMI (↑) | 37.21% | 41.54% | 41.80% |
-| | ARI (↑) | 66.10% | 66.94% | 66.97% |
-
 ---
 
 ## Discovering Centroids from Scratch
 
-If you wish to discover global centroids from scratch instead of using precomputed ones:
+To compute global centroids from scratch:
 
 1. Simply specify a new `--proto_path` (for CUB/CelebA) or `--centroid_dir` (for PartImageNet) pointing to a non-existent file or directory.
 2. The pipeline will automatically sample reference images from the training split, extract foreground atomic region features, fit `MiniBatchKMeans`, and cache the discovered centroids to disk for subsequent evaluation:
@@ -255,7 +234,7 @@ python main.py \
 
 ## 📖 Citation
 
-If you find this work or code useful in your research, please cite:
+If you find this work or code useful in your research, please consider citing:
 
 ```bibtex
 @inproceedings{rawlekar2026complementing,
