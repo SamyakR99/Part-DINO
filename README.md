@@ -1,6 +1,6 @@
-# PART-DINO (NeurIPS 2026)
+# Part-DINO (NeurIPS 2026)
 
-Official PyTorch implementation for **" PART-DINO: Complementing DINO Features with Image Structure for Part Discovery"** .
+Official PyTorch implementation for **" Part-DINO: Complementing DINO Features with Image Structure for Part Discovery"**.
 
 ---
 
