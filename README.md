@@ -39,7 +39,7 @@ part_discovery_release/
 
 ---
 
-## ⚙️ Environment Setup
+## Environment Setup
 
 ### Option 1: Using Conda (Recommended)
 
@@ -72,7 +72,7 @@ huggingface-cli login
 
 ---
 
-## 📦 Dataset Preparation
+## Dataset Preparation
 
 Set up the datasets following the directory layouts below. You can either place them in `./data/` or set the environment variable `DATA_ROOT` before running any script.
 
@@ -202,7 +202,7 @@ DATA_ROOT=/path/to/PartImageNet_Seg/PartImageNet bash scripts/run_table5_partima
 
 ---
 
-## 🔬 Discovering Centroids from Scratch
+## Discovering Centroids from Scratch
 
 If you wish to discover global centroids from scratch instead of using precomputed ones:
 
@@ -228,7 +228,7 @@ python main.py \
 
 ---
 
-## 🎨 Discovery & Visualization on Custom Images
+## Discovery & Visualization on Custom Images
 
 To run unsupervised part discovery and save visual part segmentations:
 
