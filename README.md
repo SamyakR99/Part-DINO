@@ -31,10 +31,10 @@ part_discovery_release/
 ├── global_kmeans.py               # Prototype discovery & region-to-centroid assignment
 ├── segmentation.py                # SAM3 / TokenCut foreground segmentation backends
 ├── scripts/                       # Reproduction scripts for paper tables
-│   ├── run_table1_cub.sh          # Replicate Table 1 (CUB-200-2011, K=4, 8, 16)
-│   ├── run_table2_celeba.sh       # Replicate Table 2 (CelebA / MAFL, K=4, 8, 16)
-│   ├── run_table5_partimagenet_ood.sh # Replicate Table 5 Left (PartImageNet-OOD, K=8, 25, 50)
-│   └── run_table5_partimagenet_seg.sh # Replicate Table 5 Right (PartImageNet-Seg, K=8, 25, 50)
+│   ├── run_table1_cub.sh          # CUB-200-2011, K=4, 8, 16
+│   ├── run_table2_celeba.sh       # CelebA / MAFL, K=4, 8, 16
+│   ├── run_table5_partimagenet_ood.sh # PartImageNet-OOD, K=8, 25, 50
+│   └── run_table5_partimagenet_seg.sh # PartImageNet-Seg, K=8, 25, 50
 └── pretrained_centroids/          # Precomputed global centroids for instant reproduction
     ├── cub/                       # K=4, 8, 16 centroids for CUB
     ├── celeba/                    # K=4, 8, 16 centroids for CelebA
