@@ -23,23 +23,23 @@ PyTorch implementation for **" Part-DINO: Complementing DINO Features with Image
 
 ```
 part_discovery_release/
-├── README.md                      # Complete setup and replication instructions
-├── requirements.txt               # Minimal pip dependencies
-├── environment.yml                # Conda environment definition
-├── main.py                        # Core pipeline & evaluation harness
-├── dataset.py                     # Unified dataloaders (CUB, CelebA, PartImageNet)
-├── global_kmeans.py               # Prototype discovery & region-to-centroid assignment
-├── segmentation.py                # SAM3 / TokenCut foreground segmentation backends
-├── scripts/                       # Reproduction scripts for paper tables
-│   ├── run_table1_cub.sh          # CUB-200-2011, K=4, 8, 16
-│   ├── run_table2_celeba.sh       # CelebA / MAFL, K=4, 8, 16
-│   ├── run_table5_partimagenet_ood.sh # PartImageNet-OOD, K=8, 25, 50
-│   └── run_table5_partimagenet_seg.sh # PartImageNet-Seg, K=8, 25, 50
-└── pretrained_centroids/          # Precomputed global centroids for instant reproduction
-    ├── cub/                       # K=4, 8, 16 centroids for CUB
-    ├── celeba/                    # K=4, 8, 16 centroids for CelebA
-    ├── partimagenet_ood/          # Per-supercategory centroids for OOD (K=8, 25, 50)
-    └── partimagenet_seg/          # Per-supercategory centroids for Seg (K=8, 25, 50)
+├── README.md                      
+├── requirements.txt                      # pip dependencies
+├── environment.yml                       # Conda environment
+├── main.py                               # Core pipeline & evaluation harness
+├── dataset.py                            # Dataloaders (CUB, CelebA, PartImageNet)
+├── global_kmeans.py                      # Prototype discovery & region-to-centroid assignment
+├── segmentation.py                       # SAM3
+├── scripts/                              # Reproduction scripts
+│   ├── run_table1_cub.sh                 # CUB-200-2011, K=4, 8, 16
+│   ├── run_table2_celeba.sh              # CelebA / MAFL, K=4, 8, 16
+│   ├── run_table5_partimagenet_ood.sh    # PartImageNet-OOD, K=8, 25, 50
+│   └── run_table5_partimagenet_seg.sh    # PartImageNet-Seg, K=8, 25, 50
+└── pretrained_centroids/                 # Precomputed global centroids for instant reproduction
+    ├── cub/                              # K=4, 8, 16 centroids for CUB
+    ├── celeba/                           # K=4, 8, 16 centroids for CelebA
+    ├── partimagenet_ood/                 # Per-supercategory centroids for OOD (K=8, 25, 50)
+    └── partimagenet_seg/                 # Per-supercategory centroids for Seg (K=8, 25, 50)
 ```
 
 ---
